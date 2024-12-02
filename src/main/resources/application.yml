@@ -1,0 +1,12 @@
+spring:
+  data:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/eBankify_p1
+    username: postgres
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+    port: 8081
