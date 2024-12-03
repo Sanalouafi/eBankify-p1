@@ -1,31 +1,21 @@
 package com.example.ebankifyp1.dto;
 
-import com.example.ebankifyp1.model.enums.TransactionStatus;
 import com.example.ebankifyp1.model.enums.TransactionType;
-import jakarta.validation.constraints.*;
-import lombok.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class TransactionDTO {
-    private Long id;
-
-    @NotNull(message = "Account ID is mandatory")
+    @NotNull
     private Long accountId;
 
-    @NotNull(message = "Transaction type is mandatory")
+    @NotNull
     private TransactionType transactionType;
 
-    @Positive(message = "Amount must be positive")
+    @NotNull
     private BigDecimal amount;
-
-    private LocalDateTime timestamp;
-
-    private TransactionStatus status;
 
     private String description;
 }

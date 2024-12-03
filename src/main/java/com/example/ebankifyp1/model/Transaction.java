@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "transaction")
 @Data
+@Entity
+@Table(name = "transactions")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Transaction {
@@ -34,9 +34,7 @@ public class Transaction {
     @Enumerated(EnumType.STRING)
     private TransactionStatus status;
 
-    private String description;
-
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = true)
+    @JoinColumn(name = "user_id")
     private User user;
 }

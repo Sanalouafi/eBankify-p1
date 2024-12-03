@@ -7,9 +7,9 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "account")
 @Data
+@Entity
+@Table(name = "accounts")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Account {

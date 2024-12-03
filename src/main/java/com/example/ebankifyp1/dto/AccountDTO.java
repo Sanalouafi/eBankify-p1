@@ -1,13 +1,13 @@
 package com.example.ebankifyp1.dto;
 
 import com.example.ebankifyp1.model.enums.AccountStatus;
-import jakarta.validation.constraints.*;
-import lombok.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 import java.math.BigDecimal;
+
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class AccountDTO {
     private Long id;
 
