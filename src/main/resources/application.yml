@@ -10,3 +10,5 @@ spring:
     show-sql: true
 server:
     port: 8081
+jwt:
+  secret: "XWiYK6g9EH1BL6jb5sB4KmyRDvyT2t2T6GOZhBPDQO8="
