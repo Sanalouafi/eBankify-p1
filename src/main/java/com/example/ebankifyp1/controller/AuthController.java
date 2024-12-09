@@ -7,14 +7,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     @Autowired
     private AuthService authService;
 
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody UserDTO userDTO) {
+        String response = authService.register(userDTO);
+        return ResponseEntity.ok(response);
+    }
+
     @PostMapping("/login")
-    public ResponseEntity<String> authenticate(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<String> login(@RequestBody UserDTO userDTO) {
         String token = authService.authenticate(userDTO);
         return ResponseEntity.ok(token);
     }

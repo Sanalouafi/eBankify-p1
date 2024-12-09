@@ -8,7 +8,10 @@ import com.example.ebankifyp1.security.JwtProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 public class AuthService {
@@ -21,6 +24,26 @@ public class AuthService {
 
     @Autowired
     private JwtProvider jwtProvider;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    public String register(UserDTO userDTO) {
+        // Check if the email already exists
+        if (userRepository.findByEmail(userDTO.getEmail()).isPresent()) {
+            throw new InvalidCredentialsException("Email already in use.");
+        }
+
+        User user = new User();
+        user.setEmail(userDTO.getEmail());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        user.setRole(userDTO.getRole());
+        user.setCreatedAt(LocalDateTime.now());
+        user.setUpdatedAt(LocalDateTime.now());
+
+        userRepository.save(user);
+        return "User registered successfully";
+    }
 
     public String authenticate(UserDTO userDTO) {
         try {
