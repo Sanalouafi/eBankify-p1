@@ -7,6 +7,7 @@ import com.example.ebankifyp1.repository.UserRepository;
 import com.example.ebankifyp1.security.JwtProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -50,7 +51,7 @@ public class AuthService {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(userDTO.getEmail(), userDTO.getPassword()));
             return jwtProvider.generateToken(userDTO.getEmail());
-        } catch (Exception e) {
+        } catch (BadCredentialsException e) {
             throw new InvalidCredentialsException("Invalid email or password.");
         }
     }
