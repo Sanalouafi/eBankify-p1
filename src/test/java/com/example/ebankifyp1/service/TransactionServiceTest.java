@@ -32,21 +32,21 @@ import static org.mockito.Mockito.*;
     }
 
     @Test
-    public void testCreateTransaction() {
+     void testCreateTransaction() {
         when(transactionRepository.save(any(Transaction.class))).thenReturn(transaction);
         Transaction createdTransaction = transactionService.createTransaction(transaction);
         assertEquals(transaction.getId(), createdTransaction.getId());
     }
 
     @Test
-    public void testGetTransactionById_TransactionFound() {
+     void testGetTransactionById_TransactionFound() {
         when(transactionRepository.findById(1L)).thenReturn(Optional.of(transaction));
         Transaction foundTransaction = transactionService.getTransactionById(1L);
         assertEquals(transaction.getId(), foundTransaction.getId());
     }
 
     @Test
-    public void testGetTransactionById_TransactionNotFound() {
+     void testGetTransactionById_TransactionNotFound() {
         when(transactionRepository.findById(2L)).thenReturn(Optional.empty());
         Exception exception = assertThrows(TransactionNotFoundException.class, () -> transactionService.getTransactionById(2L));
         assertEquals("Transaction not found with id: 2", exception.getMessage());

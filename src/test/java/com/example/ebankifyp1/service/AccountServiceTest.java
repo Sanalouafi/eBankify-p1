@@ -32,21 +32,21 @@ import static org.mockito.Mockito.*;
     }
 
     @Test
-    public void testCreateAccount() {
+     void testCreateAccount() {
         when(accountRepository.save(any(Account.class))).thenReturn(account);
         Account createdAccount = accountService.createAccount(account);
         assertEquals(account.getId(), createdAccount.getId());
     }
 
     @Test
-    public void testGetAccountById_AccountFound() {
+     void testGetAccountById_AccountFound() {
         when(accountRepository.findById(1L)).thenReturn(Optional.of(account));
         Account foundAccount = accountService.getAccountById(1L);
         assertEquals(account.getId(), foundAccount.getId());
     }
 
     @Test
-    public void testGetAccountById_AccountNotFound() {
+     void testGetAccountById_AccountNotFound() {
         when(accountRepository.findById(2L)).thenReturn(Optional.empty());
         Exception exception = assertThrows(AccountNotFoundException.class, () -> accountService.getAccountById(2L));
         assertEquals("Account not found with id: 2", exception.getMessage());

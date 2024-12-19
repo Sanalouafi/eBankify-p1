@@ -52,14 +52,14 @@ import static org.mockito.Mockito.*;
     }
 
     @Test
-    public void testRegister_UserAlreadyExists() {
+     void testRegister_UserAlreadyExists() {
         when(userRepository.findByEmail(userDTO.getEmail())).thenReturn(Optional.of(user));
         Exception exception = assertThrows(InvalidCredentialsException.class, () -> authService.register(userDTO));
         assertEquals("Email already in use.", exception.getMessage());
     }
 
     @Test
-    public void testRegister_Success() {
+     void testRegister_Success() {
         when(userRepository.findByEmail(userDTO.getEmail())).thenReturn(Optional.empty());
         when(passwordEncoder.encode(userDTO.getPassword())).thenReturn("encoded_password");
         when(userRepository.save(any(User.class))).thenReturn(user);
@@ -68,7 +68,7 @@ import static org.mockito.Mockito.*;
     }
 
     @Test
-    public void testAuthenticate_InvalidCredentials() {
+     void testAuthenticate_InvalidCredentials() {
         when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
                 .thenThrow(new BadCredentialsException("Invalid credentials"));
         Exception exception = assertThrows(InvalidCredentialsException.class, () -> authService.authenticate(userDTO));
@@ -76,7 +76,7 @@ import static org.mockito.Mockito.*;
     }
 
     @Test
-    public void testAuthenticate_Success() {
+     void testAuthenticate_Success() {
         when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
                 .thenReturn(null);
         when(jwtProvider.generateToken(userDTO.getEmail())).thenReturn("token");

@@ -33,28 +33,28 @@ import static org.mockito.Mockito.*;
     }
 
     @Test
-    public void testCreateUser() {
+     void testCreateUser() {
         when(userRepository.save(any(User.class))).thenReturn(user);
         User createdUser = userService.createUser(user);
         assertEquals(user.getId(), createdUser.getId());
     }
 
     @Test
-    public void testDeleteUser_UserNotFound() {
+     void testDeleteUser_UserNotFound() {
         when(userRepository.existsById(2L)).thenReturn(false);
         Exception exception = assertThrows(UserNotFoundException.class, () -> userService.deleteUser(2L));
         assertEquals("User not found with id: 2", exception.getMessage());
     }
 
     @Test
-    public void testGetUserById_UserFound() {
+     void testGetUserById_UserFound() {
         when(userRepository.findById(1L)).thenReturn(Optional.of(user));
         User foundUser = userService.getUserById(1L);
         assertEquals(user.getId(), foundUser.getId());
     }
 
     @Test
-    public void testGetUserById_UserNotFound() {
+     void testGetUserById_UserNotFound() {
         when(userRepository.findById(2L)).thenReturn(Optional.empty());
         Exception exception = assertThrows(UserNotFoundException.class, () -> userService.getUserById(2L));
         assertEquals("User not found with id: 2", exception.getMessage());
