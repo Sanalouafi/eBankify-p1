@@ -14,7 +14,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class TransactionServiceTest {
+ class TransactionServiceTest {
 
     @InjectMocks
     private TransactionService transactionService;

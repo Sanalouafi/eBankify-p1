@@ -3,6 +3,7 @@ package com.example.ebankifyp1.controller;
 import com.example.ebankifyp1.dto.UserDTO;
 import com.example.ebankifyp1.model.User;
 import com.example.ebankifyp1.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@AllArgsConstructor
 public class UserController {
 
-    @Autowired
+
     private UserService userService;
 
     @PostMapping
