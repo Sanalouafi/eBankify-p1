@@ -21,7 +21,7 @@ import static org.mockito.Mockito.*;
 
     @Mock
     private UserRepository userRepository;
-
+    @Mock
     private User user;
 
     @BeforeEach

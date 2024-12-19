@@ -21,7 +21,7 @@ import static org.mockito.Mockito.*;
 
     @Mock
     private TransactionRepository transactionRepository;
-
+    @Mock
     private Transaction transaction;
 
     @BeforeEach

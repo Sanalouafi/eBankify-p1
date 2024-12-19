@@ -36,8 +36,9 @@ import static org.mockito.Mockito.*;
 
     @Mock
     private PasswordEncoder passwordEncoder;
-
+    @Mock
     private UserDTO userDTO;
+    @Mock
     private User user;
 
     @BeforeEach
