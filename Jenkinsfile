@@ -48,7 +48,10 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn clean package'
+                bat '''
+                echo %SONAR_TOKEN%
+                mvn clean package
+                '''
             }
         }
 
