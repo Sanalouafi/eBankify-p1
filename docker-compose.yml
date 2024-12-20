@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    image: ebankify-p1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/eBankify_p1
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+      JWT_SECRET: "XWiYK6g9EH1BL6jb5sB4KmyRDvyT2t2T6GOZhBPDQO8="
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: eBankify_p1
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "8283:8281"
