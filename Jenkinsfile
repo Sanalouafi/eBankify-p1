@@ -49,7 +49,7 @@ pipeline {
         stage('Build') {
             steps {
                 bat '''
-                echo "Affichage du token SonarQube : ${env.SONAR_TOKEN}"
+                echo "Affichage du token SonarQube :" ${env.SONAR_TOKEN}
                 mvn clean package
                 '''
             }
