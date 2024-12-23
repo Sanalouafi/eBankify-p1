@@ -8,7 +8,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'banking-system'
         DOCKER_TAG = "${BUILD_NUMBER}"
-        SONAR_TOKEN = credentials('19f57ae2-2108-4b2c-891d-c510cb959601') // Assurez-vous que ce credential est configuré dans Jenkins
+        SONAR_TOKEN = credentials('sonar-token') // Assurez-vous que ce credential est configuré dans Jenkins
     }
 
     stages {
@@ -49,7 +49,7 @@ pipeline {
         stage('Build') {
             steps {
                 bat '''
-                echo "Affichage du token SonarQube :" %$SONAR_TOKEN%
+                echo "Affichage du token SonarQube :" %SONAR_TOKEN%
                 mvn clean package
                 '''
             }
@@ -69,7 +69,7 @@ pipeline {
         stage('Code Quality Analysis') {
             steps {
                 bat '''
-                    mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.token=$SONAR_TOKEN -e
+                    mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.token=${env.SONAR_TOKEN} -e
                 '''
             }
         }
