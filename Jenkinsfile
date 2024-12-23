@@ -8,7 +8,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'banking-system'
         DOCKER_TAG = "${BUILD_NUMBER}"
-        SONAR_TOKEN = credentials('sonar-token') // Assurez-vous que ce credential est configuré dans Jenkins
+        SONAR_TOKEN = credentials('19f57ae2-2108-4b2c-891d-c510cb959601') // Assurez-vous que ce credential est configuré dans Jenkins
     }
 
     stages {
