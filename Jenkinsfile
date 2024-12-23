@@ -49,7 +49,7 @@ pipeline {
         stage('Build') {
             steps {
                 bat '''
-                echo "Affichage du token SonarQube :" %SONAR_TOKEN%
+                echo "Affichage du token SonarQube :" %$SONAR_TOKEN%
                 mvn clean package
                 '''
             }
@@ -69,7 +69,7 @@ pipeline {
         stage('Code Quality Analysis') {
             steps {
                 bat '''
-                    mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.token=${SONAR_TOKEN} -e
+                    mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.token=$SONAR_TOKEN -e
                 '''
             }
         }
