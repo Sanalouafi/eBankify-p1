@@ -69,7 +69,7 @@ pipeline {
         stage('Code Quality Analysis') {
             steps {
                 bat '''
-                    mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=${env.SONAR_TOKEN} -e
+                    mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.token=${SONAR_TOKEN} -e
                 '''
             }
         }
